@@ -102,6 +102,7 @@ class GoogleCloudStorage(Storage):
         self.thread = threading.local()
         config = _gcs_file_storage_settings()
         self.bucket = config["bucket"]
+        self.num_retries = config['num_retries']
         self.path_prefix = self.path_prefix if hasattr(self, "path_prefix") else config["path_prefix"]
         self.allow_overwrite = self.allow_overwrite if hasattr(self, "allow_overwrite") else config["allow_overwrite"]
         self.cache_control = self.cache_control if hasattr(self, "cache_control") else config["cache_control"]
