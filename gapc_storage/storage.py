@@ -217,24 +217,8 @@ class GoogleCloudStorage(Storage):
     def get_created_time(self, name):
         return dateutil.parser.parse(self.get_gcs_object(name)["timeCreated"])
 
-    def created_time(self, name):
-        warnings.warn(
-            'Storage.created_time() is deprecated in favor of get_created_time().',
-            DeprecationWarning,
-            stacklevel=2,
-        )
-        return self.get_created_time(name)
-
     def get_modified_time(self, name):
         return dateutil.parser.parse(self.get_gcs_object(name)["updated"])
-
-    def modified_time(self, name):
-        warnings.warn(
-            'Storage.modified_time() is deprecated in favor of get_modified_time().',
-            DeprecationWarning,
-            stacklevel=2,
-        )
-        return self.get_modified_time(name)
 
     def get_available_name(self, name, max_length=None):
         if self.allow_overwrite:
